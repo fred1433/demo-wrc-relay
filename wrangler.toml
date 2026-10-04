@@ -1,0 +1,41 @@
+# One Worker: the static demo page plus the relay itself, under theaipipe.com/demos/wrc-relay
+name = "wrc-relay-demo"
+main = "src/worker.js"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+routes = [
+  { pattern = "theaipipe.com/demos/wrc-relay", zone_name = "theaipipe.com" },
+  { pattern = "theaipipe.com/demos/wrc-relay/*", zone_name = "theaipipe.com" }
+]
+
+[vars]
+BASE = "/demos/wrc-relay"
+PUBLIC_ORIGIN = "https://theaipipe.com"
+MODEL = "claude-sonnet-5-5"
+GEN_CAP = "8"
+GEN_DAILY_CAP = "3"
+INTAKE_DAILY_CAP = "20"
+GENERATION_ENABLED = "false"
+GENERATION_MODE = "external"
+RCPT_MAILBOX_DOMAIN = "theaipipe.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wrc-relay"
+database_id = "3a83e075-aaeb-432c-bbd4-f20f326a28a2"
+
+[[queues.producers]]
+binding = "JOBS"
+queue = "wrc-relay-jobs"
+
+[[queues.consumers]]
+queue = "wrc-relay-jobs"
+max_batch_size = 1
+max_retries = 0
+
+[assets]
+directory = "./site"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+run_worker_first = true

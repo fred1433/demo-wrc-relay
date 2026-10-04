@@ -1,0 +1,46 @@
+{
+  "contact_id": "demoContact7Qp2",
+  "first_name": "Dana",
+  "last_name": "Whitfield",
+  "full_name": "Dana Whitfield",
+  "email": "test-mailbox+requester@gmail.com",
+  "phone": "+15550100123",
+  "tags": [
+    "content-request"
+  ],
+  "date_created": "2026-10-04T23:05:00.000Z",
+  "contact_source": "Content request form",
+  "location": {
+    "name": "Demo sub-account",
+    "address": "(sub-account address, not used)",
+    "city": "(not used)",
+    "state": "(not used)",
+    "country": "US",
+    "postalCode": "00000",
+    "id": "demoLocation01"
+  },
+  "workflow": {
+    "id": "demoWorkflow01",
+    "name": "Content request -> relay"
+  },
+  "triggerData": {},
+  "customData": {
+    "form_name": "Service page request",
+    "site_name": "Prairie Line Tree Removal",
+    "site_url": "",
+    "service": "Tree removal",
+    "site_city": "Spokane",
+    "site_state": "WA",
+    "page_goal": "Get homeowners in north Spokane and on Five Mile Prairie to ask for an on-site tree removal quote by phone or through the form.",
+    "site_description": "Lead-generation site for tree removal in Spokane. Calls and quote requests go to the local tree crew that rents the site. Most callers are homeowners with a tall pine or a dead tree close to the house, garage or fence.",
+    "areas_served": "North Spokane\nFive Mile Prairie\nMead\nNine Mile Falls\nSouth Hill",
+    "keywords": "tree removal Spokane\nSpokane tree removal service\npine tree removal Spokane\ndead tree removal Spokane\nstump grinding Spokane",
+    "included_services": "Removal of whole trees, including tall pines close to a house, garage or fence\nTaking a tree down in sections by climbing when there is no room to fell it\nHauling away branches and trunk wood\nStump grinding, quoted separately as an add-on\nCutting trunk wood into rounds and leaving it on site when the homeowner wants to keep it",
+    "excluded_services": "Trimming or pruning trees that stay\nAny tree in contact with power lines\nFilling the stump hole with topsoil or seed\nSplitting firewood",
+    "business_facts": "Quotes are free and given after the crew looks at the tree in person\nThe homeowner does not need to be home for the quote if the tree can be seen from the street or the yard is open\nBranches and trunk wood are hauled away unless the homeowner asks to keep the wood\nCalls and quote forms are answered on business days\nPhone: (509) 555-0142 (calls and texts)",
+    "local_notes": "Many lots on Five Mile Prairie and in north Spokane have tall pines growing close to the house\nSome older South Hill lots are reached from an alley, with narrow side yards\nWhen the gate is too narrow for equipment, the crew carries branches and wood out by hand",
+    "cta": "Call (509) 555-0142 or send the quote form to book a free on-site quote",
+    "editor_email": "test-mailbox+editor@gmail.com",
+    "delivery_recipient_email": "renter@recipient-test.example"
+  }
+}

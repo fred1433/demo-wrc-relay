@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Spokane Page, Delivered</title>
+<meta name="description" content="One local service page request, written by Claude, edited by a person and delivered by email, shown from one recorded run.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f8f5; --sheet:#ffffff; --ink:#1d2621; --soft:#56605a; --faint:#8a928c;
+  --rule:#dfe3dc; --pine:#2d5a3d; --pine-wash:#e6efe8; --pencil:#2b58b8; --pencil-wash:#e5ecfa; --strike:#a3423a;
+  --serif:'Source Serif 4',Georgia,serif; --sans:'Archivo',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--serif)}
+a{color:var(--pine)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--pencil);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+
+/* top */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font:500 14px/1.3 var(--sans);color:var(--soft)}
+.top img{width:22px;height:22px;vertical-align:-5px;margin-right:8px}
+.intro{padding:30px 0 34px}
+.intro h1{font:720 clamp(36px,6.2vw,84px)/.98 var(--sans);font-stretch:78%;letter-spacing:-.015em;margin:0 0 26px}
+.deck{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px;align-items:start}
+.intro p{margin:0;max-width:62ch;color:var(--ink);font-size:19px;line-height:1.55}
+.scenario{font:15px/1.5 var(--sans)!important;color:var(--soft)!important;border-left:3px solid var(--pine);padding:2px 0 2px 14px}
+
+/* route slip */
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 34px;counter-reset:r}
+.stop{border-top:2px solid var(--ink);padding:14px 18px 0 0;position:relative;font:14px/1.4 var(--sans);color:var(--soft)}
+.stop::before{counter-increment:r;content:counter(r);position:absolute;top:-13px;left:0;width:24px;height:24px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);font:700 12px/20px var(--sans);text-align:center;color:var(--ink)}
+.stop.done::before{background:var(--ink);color:var(--paper)}
+.stop.person::before{border-color:var(--pencil);background:var(--pencil);color:#fff}
+.stop.todo{border-top-style:dashed;border-top-color:var(--faint)}
+.stop.todo::before{border-style:dashed;color:var(--faint);border-color:var(--faint)}
+.stop b{display:block;font:700 17px/1.25 var(--sans);color:var(--ink);margin:16px 0 2px}
+.stop.todo b{color:var(--faint)}
+.stop time{font-variant-numeric:tabular-nums}
+
+/* main proof */
+.proof{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:36px;align-items:start;padding-bottom:64px}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:2px;box-shadow:7px 7px 0 -1px var(--paper),7px 7px 0 0 var(--rule),14px 14px 0 -1px var(--paper),14px 14px 0 0 #e9ece6}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule);padding:0 20px;overflow-x:auto}
+.tabs button{font:600 15px/1 var(--sans);background:none;border:0;border-bottom:3px solid transparent;padding:16px 12px 13px;color:var(--soft);cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--pine)}
+.panel{padding:30px 48px 44px}
+.panel[hidden]{display:none}
+.mast{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 -48px 28px;padding:14px 48px;background:var(--pine);color:#eef4ef;font:600 15px/1.2 var(--sans)}
+.mast .wm{display:flex;align-items:center;gap:10px;font:750 19px/1 var(--sans);font-stretch:80%;letter-spacing:.01em}
+.mast .wm svg{width:22px;height:26px}
+.mast .call{font-weight:600;border:1px solid #9fbba8;border-radius:3px;padding:7px 11px}
+.snippet{border:1px solid var(--rule);border-radius:6px;padding:14px 18px;margin:0 0 30px;font-family:var(--sans);background:#fbfcfa}
+.snippet .lbl{font-size:13px;color:var(--faint);margin-bottom:6px}
+.snippet .t{font-size:19px;color:#1f3f8f;line-height:1.3}
+.snippet .d{font-size:14px;color:var(--soft);margin-top:4px;line-height:1.45}
+.snippet .n{font-size:12.5px;color:var(--faint);margin-top:8px}
+.page .hero{margin:-28px -48px 30px;padding:34px 48px 30px;background:linear-gradient(180deg,#e9f1eb,#f6f9f5);border-bottom:1px solid var(--rule)}
+.page h1{font:760 clamp(30px,3.8vw,46px)/1.04 var(--sans);font-stretch:80%;margin:0 0 16px;letter-spacing:-.01em;max-width:18ch}
+.page .hero p{font-size:18.5px;max-width:60ch}
+.page .hero .btn{margin-top:6px}
+.page h2{font:700 24px/1.2 var(--sans);font-stretch:88%;margin:38px 0 12px;color:var(--ink);padding-top:16px;border-top:1px solid var(--rule);position:relative}
+.page h2::before{content:"";position:absolute;top:-2px;left:0;width:48px;height:3px;background:var(--pine)}
+.page .faq{border-top:1px solid var(--rule);margin-top:8px}
+.page .faq div{padding:14px 0;border-bottom:1px solid var(--rule)}
+.page .faq dt{margin:0 0 4px!important}
+.page p{margin:0 0 14px;max-width:68ch}
+.page .faq dt{font:650 17px/1.35 var(--sans);margin:18px 0 4px}
+.page .faq dd{margin:0 0 6px;max-width:68ch}
+.page .cta{margin:40px -48px -44px;padding:34px 48px 40px;background:var(--pine);color:#eef4ef}
+.page .cta h2{margin-top:0;color:#fff;border:0;padding:0}
+.page .cta h2::before{display:none}
+.page .cta .btn{background:#f4f1e6;color:var(--pine)}
+.page .btn{display:inline-block;font:700 16px/1 var(--sans);background:var(--pine);color:#fff;padding:13px 20px;border-radius:3px}
+mark.edit{background:var(--pencil-wash);color:inherit;box-shadow:inset 0 -2px 0 var(--pencil);padding:0 1px}
+.brief dl{display:grid;grid-template-columns:190px 1fr;gap:10px 20px;margin:0;font-size:16px}
+.brief dt{font:600 14px/1.5 var(--sans);color:var(--soft)}
+.brief dd{margin:0}
+.brief ul{margin:0;padding-left:18px}
+.note{font:14px/1.5 var(--sans);color:var(--soft);margin:0 0 22px}
+
+/* rail */
+.rail{position:sticky;top:20px;display:flex;flex-direction:column;gap:22px}
+.card{background:var(--sheet);border:1px solid var(--rule);padding:20px 22px;border-radius:2px}
+.card h2{font:700 19px/1.25 var(--sans);margin:0 0 12px}
+.card .who{font:14px/1.45 var(--sans);color:var(--soft);margin:0 0 14px}
+.pair{margin:0 0 14px}
+.pair .k{font:600 13px/1.3 var(--sans);color:var(--faint);margin-bottom:4px}
+.pair .before{text-decoration:line-through;text-decoration-color:var(--strike);text-decoration-thickness:2px;color:var(--soft)}
+.pair .after{border-left:3px solid var(--pencil);padding-left:12px}
+.pair .received{border-left:3px solid var(--pine);padding-left:12px}
+.mail{font:14px/1.5 var(--sans)}
+.mail table{border-collapse:collapse;width:100%}
+.mail td{padding:3px 0;vertical-align:top}
+.mail td:first-child{color:var(--faint);width:76px;padding-right:10px}
+.ok{color:var(--pine);font-weight:650}
+.times{list-style:none;margin:0;padding:0;font:15px/1.4 var(--sans)}
+.times li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--rule)}
+.times li:first-child{border-top:0}
+.times b{font-variant-numeric:tabular-nums}
+.waiting{font:15px/1.5 var(--sans);color:var(--soft)}
+
+/* flow */
+.flow{background:var(--sheet);border-top:1px solid var(--rule);padding:56px 0 64px}
+.flow h2.sec{font:700 clamp(28px,3.4vw,40px)/1.05 var(--sans);font-stretch:85%;margin:0 0 10px}
+.flow .lead{max-width:66ch;margin:0 0 34px;color:var(--soft)}
+.flowgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:start}
+.flowgrid > div:first-child{position:sticky;top:20px}
+.diffbox{font:16px/1.6 var(--serif);margin:0 0 6px}
+.diffbox del{text-decoration:line-through;text-decoration-color:var(--strike);text-decoration-thickness:2px;color:var(--strike);background:#fbeceb}
+.diffbox ins{text-decoration:none;background:var(--pencil-wash);box-shadow:inset 0 -2px 0 var(--pencil)}
+.diffbox .ctx{color:var(--soft)}
+.enote{font:14px/1.5 var(--sans);color:var(--soft);border-top:1px solid var(--rule);padding-top:12px;margin-top:6px}
+.src{font:13px/1.45 var(--sans);color:var(--faint)}
+.timeline{list-style:none;margin:0;padding:0;counter-reset:s}
+.timeline li{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:0 0 16px;position:relative;font:15px/1.45 var(--sans)}
+.timeline li::before{content:"";position:absolute;left:69px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--pine)}
+.timeline li::after{content:"";position:absolute;left:73px;top:18px;bottom:-2px;width:1px;background:var(--rule)}
+.timeline li:last-child::after{display:none}
+.timeline time{color:var(--faint);font-variant-numeric:tabular-nums}
+.timeline span{padding-left:22px}
+.timeline li.person::before{background:var(--pencil)}
+.block{margin-bottom:34px}
+.block h3{font:700 18px/1.3 var(--sans);margin:0 0 6px}
+.block .sub{font:14px/1.5 var(--sans);color:var(--soft);margin:0 0 12px}
+.gridwrap{overflow-x:auto;border:1px solid var(--rule)}
+table.grid{border-collapse:collapse;font:13.5px/1.35 var(--sans);width:100%}
+.grid th,.grid td{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:7px 9px;text-align:left;white-space:nowrap}
+.grid th{background:#f1f4ef;font-weight:600;color:var(--soft)}
+.grid td.rowh,.grid th.rowh{background:#f1f4ef;color:var(--faint);text-align:center;width:34px}
+.grid .st{display:inline-block;padding:2px 8px;border-radius:10px;background:var(--pine-wash);color:var(--pine);font-weight:650}
+.missionmail{border:1px solid var(--rule);padding:18px 20px;font:15px/1.5 var(--sans);background:#fbfcfa}
+.missionmail .h{color:var(--faint);font-size:13px;margin-bottom:10px}
+.missionmail ul{margin:4px 0 10px;padding-left:20px}
+details{border:1px solid var(--rule);background:#fbfcfa}
+details summary{cursor:pointer;padding:14px 18px;font:600 16px/1.3 var(--sans)}
+details .calls{padding:0 18px 16px}
+.call{border-top:1px solid var(--rule);padding:12px 0;font:14px/1.45 var(--sans)}
+.call b{font-weight:650}
+.call pre{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--rule);padding:10px;max-height:220px;overflow:auto;font:12.5px/1.45 ui-monospace,Menlo,monospace;margin:8px 0 0}
+.facts{list-style:none;margin:0;padding:0;font:15px/1.5 var(--sans)}
+.facts li{padding:9px 0;border-top:1px solid var(--rule)}
+.foot{padding:34px 0 50px;font:15px/1.5 var(--sans);color:var(--soft)}
+.foot a{font-weight:600}
+.loading{padding:60px 0;font:16px var(--sans);color:var(--soft)}
+
+@media (max-width:1020px){
+  .proof{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static;order:-1}
+  .flowgrid{grid-template-columns:minmax(0,1fr)}
+  .flowgrid > div:first-child{position:static}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  body{font-size:16.5px}
+  .panel{padding:22px 18px 30px}
+  .tabs{padding:0 8px}
+  .mast{margin:0 -18px 22px;padding:12px 18px}
+  .page .hero{margin:-22px -18px 24px;padding:24px 18px}
+  .page .cta{margin:36px -18px -30px;padding:26px 18px 30px}
+  .deck{grid-template-columns:minmax(0,1fr);gap:18px}
+  .intro p{font-size:17px}
+  .mast .call{display:none}
+  .route{grid-template-columns:minmax(0,1fr) minmax(0,1fr);row-gap:26px}
+  .brief dl{grid-template-columns:1fr;gap:2px}
+  .brief dd{margin-bottom:12px}
+  .top span:last-child{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  mark.edit{transition:background .3s}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span><img src="favicon.svg" alt="">The AI Pipe</span><span>Prepared for Website Rental Coaching</span></div>
+  <header class="intro">
+    <h1>A Spokane tree removal page, from form to inbox</h1>
+    <div class="deck"><p id="lede">A service page request arrived as a GoHighLevel-format webhook. Claude wrote the page through two narrow tools, an editor corrected it in a review page, and only the approved copy went out by email to the site's renter. Everything below comes from that one recorded run.</p>
+    <p class="scenario" id="scenario">Scenario: Prairie Line Tree Removal and its 555 phone number are invented, Spokane, WA is real, the content is one service page, and every address is a test address we control.</p></div>
+  </header>
+
+  <div class="route" id="route"></div>
+  <main class="proof" id="proof">
+    <div class="loading">Loading the recorded run.</div>
+  </main>
+</div>
+
+<section class="flow">
+  <div class="wrap">
+    <h2 class="sec">How the job moved</h2>
+    <p class="lead">One job record per request, frozen on arrival. No agent stays running while the editor works: the draft waits, and the approval is what releases the email.</p>
+    <div class="flowgrid" id="flow"></div>
+  </div>
+</section>
+
+<div class="wrap foot">
+  Built by Frederic de Lavenne de Choulot, The AI Pipe. If you want this on your own requests, a 15-minute call is the next step: <a href="https://cal.theaipipe.com">cal.theaipipe.com</a>. The code is public: <a href="https://github.com/fred1433/demo-wrc-relay">github.com/fred1433/demo-wrc-relay</a>
+</div>
+
+<script src="diff.js"></script>
+<script>
+const SHOWCASE = 'wrc-20261004-579c18';
+const REPO = 'https://github.com/fred1433/demo-wrc-relay';
+const RUN = new URLSearchParams(location.search).get('run') || SHOWCASE;
+const API = 'api/public/' + RUN;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// Only the words the editor added are marked, and only in the block where they were added.
+function highlighter(edits){
+  const byIndex = new Map(edits.filter(e => e.finalIndex != null).map(e => [e.finalIndex, e]));
+  let i = 0;
+  return text => {
+    const e = byIndex.get(i++);
+    if (!e) return esc(text);
+    return e.parts.filter(p => p.t !== '-').map(p => p.t === '+' && p.s.trim() ? `<mark class="edit">${esc(p.s)}</mark>` : esc(p.s)).join('');
+  };
+}
+function trimContext(parts){
+  // keep changed words with up to 8 words of context on each side
+  const idx = parts.map((p,k)=>p.t!=='='?k:-1).filter(k=>k>=0);
+  if (!idx.length) return parts;
+  const lo = Math.max(0, idx[0]-16), hi = Math.min(parts.length, idx[idx.length-1]+17);
+  const out = parts.slice(lo, hi);
+  if (lo > 0) out.unshift({t:'=', s:'... '}); if (hi < parts.length) out.push({t:'=', s:' ...'});
+  return out;
+}
+const diffHtml = parts => trimContext(parts).map(p => p.t === '=' ? `<span class="ctx">${esc(p.s)}</span>` : p.t === '-' ? (p.s.trim() ? `<del>${esc(p.s)}</del>` : ' ') : (p.s.trim() ? `<ins>${esc(p.s)}</ins>` : ' ')).join('');
+
+function renderPage(c, edits, site){
+  const hl = highlighter(edits);
+  const mast = `<div class="mast"><span class="wm"><svg viewBox="0 0 22 26" aria-hidden="true"><path d="M11 1 3 12h4l-5 7h7v6h4v-6h7l-5-7h4z" fill="#cfe0d3"/></svg>${esc(site)}</span><span class="call">Get a free quote</span></div>`;
+  const title = hl(c.title_tag), meta = hl(c.meta_description), h1 = hl(c.h1);
+  const intro = [].concat(c.intro).map(p => `<p>${hl(p)}</p>`).join('');
+  const secs = c.sections.map(s => `<h2>${hl(s.heading)}</h2>${s.paragraphs.map(p => `<p>${hl(p)}</p>`).join('')}`).join('');
+  const faq = c.faq.map(f => `<div><dt>${hl(f.question)}</dt><dd>${hl(f.answer)}</dd></div>`).join('');
+  const ctaH = hl(c.cta.heading), ctaT = hl(c.cta.text), btn = hl(c.cta.button_label);
+  return `<div class="snippet"><div class="lbl">How it reads in search results</div>
+    <div class="t">${title}</div><div class="d">${meta}</div>
+    <div class="n">Title ${c.title_tag.length} characters, description ${c.meta_description.length} characters</div></div>
+    <article class="page">${mast}<div class="hero"><h1>${h1}</h1>${intro}<span class="btn">${esc(c.cta.button_label)}</span></div>
+    ${secs}<h2>Frequently asked questions</h2><dl class="faq">${faq}</dl>
+    <div class="cta"><h2>${ctaH}</h2><p>${ctaT}</p><span class="btn">${btn}</span></div></article>`;
+}
+
+function renderBrief(r){
+  const li = a => `<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+  return `<p class="note">The form fields as the relay froze them on arrival. The page may only state business facts listed here. The business, its phone number and the local notes were written by us for this test.</p>
+  <div class="brief"><dl>
+    <dt>Site</dt><dd>${esc(r.site_name)} (invented for this run)</dd>
+    <dt>Service</dt><dd>${esc(r.service)}</dd>
+    <dt>City</dt><dd>${esc(r.site_city)}, ${esc(r.site_state)}</dd>
+    <dt>Content type</dt><dd>Service page</dd>
+    <dt>Page goal</dt><dd>${esc(r.page_goal)}</dd>
+    <dt>Site description</dt><dd>${esc(r.site_description)}</dd>
+    <dt>Areas served</dt><dd>${esc(r.areas_served.join(', '))}</dd>
+    <dt>Keywords</dt><dd>${li(r.keywords)}</dd>
+    <dt>Included</dt><dd>${li(r.included_services)}</dd>
+    <dt>Not included</dt><dd>${li(r.excluded_services)}</dd>
+    <dt>Business facts allowed</dt><dd>${li(r.business_facts)}</dd>
+    <dt>Local notes</dt><dd>${li(r.local_notes)}<div class="src">Written by us for this test. South Hill alleys and narrow side yards checked; tall pines on Five Mile Prairie as local tree services describe them.</div></dd>
+    <dt>Call to action</dt><dd>${esc(r.cta)}</dd>
+    <dt>Requester</dt><dd>${esc(r.requester.name)} (invented), ${esc(r.requester.email)}</dd>
+    <dt>Editor</dt><dd>${esc(r.editor_email)}</dd>
+    <dt>Delivery recipient</dt><dd>${esc(r.delivery_recipient_email)}, the business renting the site</dd>
+  </dl></div>`;
+}
+
+const t = iso => iso ? new Date(iso).toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'America/New_York'}) : '';
+function dur(a,b){ if(!a||!b) return null; const s=Math.round((new Date(b)-new Date(a))/1000); if(s<90) return s+' s'; const m=Math.round(s/60); if(m<90) return m+' min'; return (m/60).toFixed(1)+' h'; }
+
+const LABELS = {
+  request_received:'Request received, job record frozen',
+  generation_started:'Claude (Sonnet 5.5) started on the job',
+  receipt_not_found_yet:'Not in the recipient inbox yet, checked again later',
+  mcp_read_content_brief:'Claude read the brief with read_content_brief',
+  mcp_save_content_draft:'Claude saved the draft with save_content_draft',
+  generation_finished:'Draft complete, model call closed',
+  editor_mission_sent:'Mission emailed to the editor with the review link',
+  webhook_replay_ignored:'Same submission arrived again and was ignored',
+  editor_saved:'Editor (our AI assistant) saved the review copy',
+  waiting_for_generator:'Queued for the writer',
+  approved_for_delivery:'Editor set Status to Approved for delivery',
+  delivered:'Approved copy sent by Gmail to the delivery recipient',
+  receipt_checked:'Receipt checked in the recipient mailbox',
+  needs_attention:'Stopped and flagged for attention',
+};
+
+function render(j){
+  const r = j.request, sent = j.status === 'sent';
+  const finalCopy = j.approved || j.draft;
+  const edits = j.approved ? WRCDiff.changes(j.draft, j.approved) : [];
+  const body = j.receipt?.body || '';
+  const proof = document.getElementById('proof');
+  if (!sent) document.getElementById('lede').textContent = 'A service page request arrived as a GoHighLevel-format webhook. Claude wrote the page through two narrow tools, and the draft now waits for the editor to correct and approve it. Only the approved copy will go out by email to the site\'s renter. Everything below comes from that one recorded run.';
+  const stops = [
+    ['done','Request received', t(j.received_at)+' ET'],
+    [j.draft_at?'done':'todo','Claude drafted the page', j.draft_at ? 'in '+dur(j.gen_started_at, j.draft_at) : 'pending'],
+    [j.approved_at?'person':'todo', j.approved_at?'Editor corrected and approved':'Editor reviewing', j.approved_at ? t(j.approved_at)+' ET' : 'nothing sent until approval'],
+    [sent?'done':'todo','In the renter\'s inbox', sent ? t(j.sent_at)+' ET' : 'not yet'],
+  ];
+  document.getElementById('route').innerHTML = stops.map(s=>`<div class="stop ${s[0]}"><b>${s[1]}</b><time>${s[2]}</time></div>`).join('');
+
+  const editCard = j.approved ? `
+    <div class="card">
+      <h2>The editor's corrections</h2>
+      <p class="who">For this test run the editor was our AI assistant; no person edited this run. It worked in the same review page your editor would use: ${edits.length} passage${edits.length===1?'':'s'} changed before approval.</p>
+      ${edits.map(e=>`
+        <div class="pair"><div class="k">${esc(e.label)}</div><div class="diffbox">${diffHtml(e.parts)}</div>
+        ${sent ? `<div class="k" style="margin-top:6px">${e.after && body && body.replace(/\s+/g,' ').includes(e.after.replace(/\s+/g,' ')) ? '<span class="ok">Found word for word in the email the renter received.</span>' : (e.after ? 'Not found in the received email.' : 'Removed in the received email too.')}</div>` : ''}</div>
+      `).join('')}
+      ${j.editor_note ? `<div class="enote"><b>Editor's note on the draft's open questions</b><br>${esc(j.editor_note)}</div>` : ''}
+    </div>` : `
+    <div class="card">
+      <h2>With the editor</h2>
+      <p class="waiting">The draft is waiting in the editor's review copy. Nothing is sent until the editor sets Status to Approved for delivery.</p>
+    </div>`;
+
+  const mailCard = sent ? `
+    <div class="card mail">
+      <h2>Delivered</h2>
+      <table>
+        <tr><td>To</td><td>${esc(j.approved_recipient)} (renter, test address)</td></tr>
+        <tr><td>Subject</td><td>${esc(j.receipt?.subject || '')}</td></tr>
+        <tr><td>Sent</td><td>${t(j.sent_at)} ET, Gmail message ${esc(j.gmail_send?.id)}</td></tr>
+        <tr><td>Read in</td><td>${esc(j.receipt?.mailbox === 'recipient mailbox (separate account)' ? "the recipient's own mailbox, a separate test account" : 'the same test mailbox, plus-address')}</td></tr>
+        <tr><td>Inbox</td><td>${j.receipt?.in_inbox ? '<span class="ok">Arrived</span>, labels '+esc((j.receipt.labelIds||[]).join(', ')) : 'Not checked yet'}</td></tr>
+        <tr><td>Content</td><td>${j.receipt?.blocks_total ? `<span class="ok">${j.receipt.blocks_found} of ${j.receipt.blocks_total}</span> text blocks of the approved copy found word for word` : (j.receipt?.body_equals_approved_copy ? '<span class="ok">Identical</span> to the approved copy' : 'Not compared yet')}</td></tr>
+      </table>
+    </div>` : '';
+
+  const times = [
+    ['Claude writing the page', dur(j.gen_started_at, j.draft_at)],
+    ['Draft waiting for the editor', dur(j.mission_sent_at, j.approved_at)],
+    ['Approval to sent email', dur(j.approved_at, j.sent_at)],
+  ].filter(x=>x[1]);
+  const timeCard = `<div class="card"><h2>Observed on this run</h2><ul class="times">
+    ${times.map(x=>`<li><span>${x[0]}</span><b>${x[1]}</b></li>`).join('')}
+    <li><span>Editor saves</span><b>${j.editor_saves || 0} save${j.editor_saves===1?'':'s'}${j.approved_at?', approval included':''}</b></li></ul></div>`;
+
+  proof.innerHTML = `
+    <div class="sheet">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-p="final">${sent ? 'Delivered page' : 'Current draft'}</button>
+        <button role="tab" aria-selected="false" data-p="draft">Claude's first draft</button>
+        <button role="tab" aria-selected="false" data-p="brief">The brief</button>
+      </div>
+      <div class="panel" data-panel="final">${sent ? '<p class="note">The text exactly as the renter received it; the site header and search preview are drawn here for reading. Words the editor added are marked in blue.</p>' : ''}${renderPage(finalCopy, edits, r.site_name)}</div>
+      <div class="panel" data-panel="draft" hidden><p class="note">Saved by Claude through save_content_draft, before any human touched it. It also left these questions for the editor, outside the page:</p>
+        <ul class="note">${(j.draft.open_questions||[]).map(q=>`<li>${esc(q)}</li>`).join('')}</ul>${renderPage(j.draft, [], r.site_name)}</div>
+      <div class="panel" data-panel="brief" hidden>${renderBrief(r)}</div>
+    </div>
+    <aside class="rail">${editCard}${mailCard}${timeCard}</aside>`;
+
+  proof.querySelectorAll('[role=tab]').forEach(b => b.onclick = () => {
+    proof.querySelectorAll('[role=tab]').forEach(x => x.setAttribute('aria-selected', x === b));
+    proof.querySelectorAll('[data-panel]').forEach(p => p.hidden = p.dataset.panel !== b.dataset.p);
+  });
+
+  // flow section
+  const ev = j.events.filter((e,i,a) => LABELS[e.kind] && !(e.kind==='receipt_checked' && a.slice(i+1).some(x=>x.kind==='receipt_checked')));
+  const sheetCols = [['Job', j.job_id.replace('wrc-20261004-','')], ['Received', t(j.received_at)], ['City', r.site_city+', '+r.site_state], ['Service', r.service], ['Status', j.status], ['Approved', t(j.approved_at)], ['Sent', t(j.sent_at)]];
+  const toolCalls = j.mcp.map(m => {
+    let args = m.args, result = m.result;
+    if (m.tool === 'save_content_draft' && args?.content) args = { job_id: args.job_id, content: '(the full draft shown in the first draft tab)' };
+    return `<div class="call"><b>${esc(m.method)}${m.tool ? ': '+esc(m.tool) : ''}</b> at ${t(m.at)} ET
+      ${args ? `<pre>${esc(JSON.stringify(args, null, 2))}</pre>` : ''}${result ? `<pre>${esc(JSON.stringify(result, null, 2))}</pre>` : ''}</div>`;
+  }).join('');
+  const d = j.draft;
+  document.getElementById('flow').innerHTML = `
+    <div>
+      <div class="block"><h3>Event log</h3><p class="sub">Times in Eastern Time, from the job's own record. Blue marks the editor's actions.</p>
+        <ol class="timeline">${ev.map(e=>`<li class="${/editor_saved|approved/.test(e.kind)?'person':''}"><time>${t(e.at)}</time><span>${LABELS[e.kind]}</span></li>`).join('')}</ol></div>
+    </div>
+    <div>
+      <div class="block"><h3>The job row</h3><p class="sub">One row per request, the way a Google Sheet would hold it (times in ET). Editor, recipient and the Gmail id are in the <a href="${API}/sheet.csv">full row as CSV</a>.</p>
+        <div class="gridwrap"><table class="grid"><tr><th class="rowh"></th>${sheetCols.map(c=>`<th>${c[0]}</th>`).join('')}</tr>
+        <tr><td class="rowh">2</td>${sheetCols.map(c=>`<td>${c[0]==='Status'?`<span class="st">${esc(c[1])}</span>`:esc(c[1])}</td>`).join('')}</tr></table></div></div>
+      <div class="block"><h3>What the editor received</h3><p class="sub">For this test, your editor receives a review link by email, not access to anything else.</p>
+        <div class="missionmail"><div class="h">Subject: Content job ${esc(j.job_id)}: ${esc(r.service)} service page, ${esc(r.site_city)}, ${esc(r.site_state)}</div>
+        Site: ${esc(r.site_name)} (fictional, for this test)<br>Service: ${esc(r.service)}, ${esc(r.site_city)}, ${esc(r.site_state)}<br>Content type: service page<br>Keywords: ${esc(r.keywords.join(', '))}
+        <div style="margin-top:10px"><b>Facts the page may state about the business</b></div><ul>${r.business_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>
+        <b>Missing information flagged by the draft</b><ul>${(d.open_questions||[]).map(q=>`<li>${esc(q)}</li>`).join('')}</ul>
+        [Open the draft]<br>When the page can go out exactly as it stands, set Status to "Approved for delivery". It is then sent to ${esc(r.delivery_recipient_email)} with no further changes.</div></div>
+      <div class="block"><details><summary>MCP calls (${j.mcp.length})</summary><div class="calls">
+        <p class="sub" style="margin-top:4px">Claude saw two tools and nothing else. Sending, sharing, approval and the choice of recipient stay in ordinary code it cannot reach.</p>${toolCalls}</div></details></div>
+      <div class="block"><h3>Technical details</h3><ul class="facts">
+        <li>Run from a demo submission; GoHighLevel hookup not yet tested. The payload follows the workflow Webhook action format, with each field mapped from Custom Data.</li>
+        <li>Written by ${esc(j.model?.model || 'claude-sonnet-5-5')} through Claude Code in print mode on a Claude subscription, connected to the relay's MCP server: ${j.model?.num_turns || ''} turns, ${Math.round((j.model?.duration_ms||0)/1000)} s. The relay can also call the Claude API directly with the MCP connector. Your own instructions and approved examples would be the next step.</li>
+        <li>The job record lives in a database table and the editor works in a review page. A Google Sheet and a Google Doc were not connected for this run.</li>
+        <li>States: in review, approved, sending, sent, needs attention. A replayed submission or approval creates nothing new; an edit after approval is refused; a missing field or a failed step stops at needs attention.</li>
+        <li>Local notes were written by us for this test. The power-line step and Avista's number, (800) 227-9187, were added by the editor from Avista's tree-trimming pages on myavista.com. No city rules or statistics were added.</li>
+        <li>Code: <a href="${REPO}">${REPO.replace('https://','')}</a>. The receipt is read in the recipient's own mailbox, a separate test account from the sender.</li>
+        <li>Online generation is switched off on this deployment: the page shows the recorded run, and no public address can start a model call.</li>
+      </ul></div>
+    </div>`;
+}
+
+fetch(API, {cache:'no-store'}).then(r => r.ok ? r.json() : Promise.reject(r.status)).then(render).catch(() => {
+  document.getElementById('proof').innerHTML = '<div class="loading">The recorded run could not be loaded. Refresh the page to try again.</div>';
+});
+</script>
+</body>
+</html>

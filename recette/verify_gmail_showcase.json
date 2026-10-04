@@ -1,0 +1,14 @@
+{
+  "test-mailbox+renter-spokane@gmail.com": {
+    "delivered_messages": 1,
+    "labels": [
+      [
+        "UNREAD",
+        "SENT",
+        "INBOX"
+      ]
+    ],
+    "sentence_found": true
+  },
+  "editor_missions_in_mailbox": 3
+}

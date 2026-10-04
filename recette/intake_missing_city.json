@@ -1,0 +1,8 @@
+{
+  "job_id": "wrc-20261004-da6b9f",
+  "status": "needs_attention",
+  "missing": [
+    "site_city",
+    "delivery_recipient_email"
+  ]
+}

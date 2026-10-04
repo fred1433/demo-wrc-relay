@@ -1,0 +1,16 @@
+{
+ "edits": [
+  {
+   "path": "sections.5.paragraphs.0",
+   "before": "A few details make the quote faster and more accurate. Tell the crew or send a photo showing:",
+   "after": "A few details make the quote faster and more accurate. When you call or fill in the form, tell the crew:"
+  },
+  {
+   "path": "sections.6.paragraphs.0",
+   "before": "This service does not cover trimming or pruning trees that stay, any tree in contact with power lines, filling the stump hole with topsoil or seed, or splitting firewood.",
+   "after": "This service does not cover trimming or pruning trees that stay, any tree in contact with power lines, filling the stump hole with topsoil or seed, or splitting firewood. If a tree touches a power line or leans on the line that runs from the pole to your house, call your electric utility before anyone works on it. If Avista supplies your power, the number is (800) 227-9187: Avista inspects trees near its lines at no cost, and when the line to your house has to be switched off so a contractor can remove a tree safely, it does that at no cost too."
+  }
+ ],
+ "note": "Flagged questions: insurance and licensing, timeframes, storm or urgent work, site address and Spokane permits are not in the form, so the page stays silent on them; the renter can add them. Removed an offer to send photos (the form does not say photos are used). Added the power-line step with Avista's published number and no-cost service line disconnect (source: myavista.com, tree trimming and tree assessments pages).",
+ "msg": "Approved. Delivery is on its way."
+}

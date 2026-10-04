@@ -1,0 +1,44 @@
+{
+  "contact_id": "demoContact7Qp2",
+  "first_name": "Dana",
+  "last_name": "Whitfield",
+  "full_name": "Dana Whitfield",
+  "email": "test-mailbox+requester@gmail.com",
+  "phone": "+15550100123",
+  "tags": [
+    "content-request"
+  ],
+  "date_created": "2026-10-04T21:46:00.000Z",
+  "contact_source": "Content request form",
+  "location": {
+    "name": "Demo sub-account",
+    "address": "(sub-account address, not used)",
+    "city": "(not used)",
+    "state": "(not used)",
+    "country": "US",
+    "postalCode": "00000",
+    "id": "demoLocation01"
+  },
+  "workflow": {
+    "id": "demoWorkflow01",
+    "name": "Content request -> relay"
+  },
+  "triggerData": {},
+  "customData": {
+    "form_name": "Service page request",
+    "site_name": "Bench Line Tree Removal",
+    "site_url": "",
+    "service": "Tree removal",
+    "site_state": "ID",
+    "page_goal": "Get Boise homeowners to ask for an on-site tree removal quote by phone or through the form.",
+    "site_description": "Lead-generation site for tree removal in Boise. Calls and quote requests go to the local tree crew that rents the site. Most callers want a dead or leaning tree taken out of a back yard.",
+    "areas_served": "North End\nBoise Bench\nSoutheast Boise\nWest Boise",
+    "keywords": "tree removal Boise\nBoise tree removal service\ndead tree removal Boise\nstump grinding Boise",
+    "included_services": "Removal of whole trees in back and front yards\nTaking a tree down in sections by climbing when there is no room to fell it\nHauling away branches and trunk wood\nStump grinding, quoted separately as an add-on",
+    "excluded_services": "Trimming or pruning trees that stay\nAny tree in contact with power lines\nFirewood splitting",
+    "business_facts": "Quotes are free and given after the crew looks at the tree in person\nBranches and trunk wood are hauled away unless the homeowner asks to keep the wood\nCalls and quote forms are answered on business days",
+    "local_notes": "Many back yards are fenced, with gates narrower than a truck\nWhen the gate is too narrow for equipment, the crew carries branches and wood out by hand",
+    "cta": "Call or send the quote form to book a free on-site quote",
+    "editor_email": "test-mailbox+editor@gmail.com"
+  }
+}

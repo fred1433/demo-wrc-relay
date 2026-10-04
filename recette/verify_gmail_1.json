@@ -1,0 +1,19 @@
+{
+  "test-mailbox+renter-boise@gmail.com": {
+    "delivered_messages": 1,
+    "labels": [
+      [
+        "UNREAD",
+        "SENT",
+        "INBOX"
+      ]
+    ],
+    "sentence_found": true
+  },
+  "test-mailbox+renter-spokane@gmail.com": {
+    "delivered_messages": 0,
+    "labels": [],
+    "sentence_found": null
+  },
+  "editor_missions_in_mailbox": 3
+}
