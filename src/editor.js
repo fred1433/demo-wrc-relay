@@ -36,7 +36,7 @@ Facts the page may state: ${esc(r.business_facts.join(' / '))}${(c.open_question
 <label>Title tag</label>${ta('title_tag', c.title_tag)}
 <label>Meta description</label>${ta('meta_description', c.meta_description)}
 <label>Page</label>${ta('h1', c.h1, 'h1')}${paras('intro', [].concat(c.intro))}
-${c.sections.map((s, i) => ta(`sections.${i}.heading`, s.heading, 'h2') + paras(`sections.${i}.paragraphs`, s.paragraphs)).join('')}
+${c.sections.map((s, i) => ta(`sections.${i}.heading`, s.heading, 'h2') + paras(`sections.${i}.paragraphs`, s.paragraphs) + (s.bullets || []).map((b, j) => '<div style="display:flex;gap:6px"><span style="padding-top:6px">&bull;</span>' + ta(`sections.${i}.bullets.${j}`, b) + '</div>').join('')).join('')}
 <label>FAQ</label>${c.faq.map((f, i) => ta(`faq.${i}.question`, f.question, 'q') + ta(`faq.${i}.answer`, f.answer)).join('')}
 <label>Call to action</label>${ta('cta.heading', c.cta.heading, 'h2')}${ta('cta.text', c.cta.text)}${ta('cta.button_label', c.cta.button_label)}
 <label>Editor's note on the flagged questions (kept in the record, not sent)</label><textarea id="note" ${locked ? 'readonly' : ''} style="font:15px/1.5 'Public Sans',sans-serif;border:1px solid var(--rule);min-height:90px">${esc(job.editor_note || '')}</textarea>

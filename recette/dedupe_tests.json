@@ -1,0 +1,47 @@
+{
+  "1_same_event_replayed": {
+    "first": {
+      "job_id": "wrc-20261005-c74fff",
+      "status": "needs_attention",
+      "missing": [
+        "site_city",
+        "delivery_recipient_email"
+      ]
+    },
+    "replay": {
+      "job_id": "wrc-20261005-c74fff",
+      "status": "needs_attention",
+      "replay": true
+    },
+    "pass": true
+  },
+  "2_same_event_reserialized_with_key": {
+    "job": {
+      "job_id": "wrc-20261005-c74fff",
+      "status": "needs_attention",
+      "replay": true
+    },
+    "pass": true
+  },
+  "2b_same_event_reserialized_without_key": {
+    "first": {
+      "job_id": "wrc-20261005-cc9138",
+      "status": "needs_attention",
+      "missing": [
+        "site_city",
+        "delivery_recipient_email"
+      ]
+    },
+    "reserialized": {
+      "job_id": "wrc-20261005-cc9138",
+      "status": "needs_attention",
+      "replay": true
+    },
+    "pass": true
+  },
+  "3_identical_with_different_keys": {
+    "A": "wrc-20261005-c74fff",
+    "B": "wrc-20261005-470b79",
+    "pass": true
+  }
+}

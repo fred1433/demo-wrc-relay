@@ -1,0 +1,59 @@
+{
+ "method_claims": [
+  {
+   "claim": "take it down in sections by climbing",
+   "in_delivered_copy": true,
+   "grounded_by": "included_services: Taking a tree down in sections by climbing when there is no room to fell it"
+  },
+  {
+   "claim": "hauls away the branches and trunk wood",
+   "in_delivered_copy": true,
+   "grounded_by": "business_facts: Branches and trunk wood are hauled away unless the homeowner asks to keep the wood"
+  },
+  {
+   "claim": "trunk is cut into rounds and left on site",
+   "in_delivered_copy": true,
+   "grounded_by": "included_services: Cutting trunk wood into rounds and leaving it on site when the homeowner wants to keep it"
+  },
+  {
+   "claim": "quoted separately",
+   "in_delivered_copy": true,
+   "grounded_by": "included_services: Stump grinding, quoted separately as an add-on"
+  },
+  {
+   "claim": "carries branches and wood out by hand",
+   "in_delivered_copy": true,
+   "grounded_by": "local_notes: Some lots are reached from an alley, with narrow side yards"
+  },
+  {
+   "claim": "given after the crew looks at the tree in person",
+   "in_delivered_copy": true,
+   "grounded_by": "business_facts: Quotes are free and given after the crew looks at the tree in person"
+  },
+  {
+   "claim": "do not need to be home",
+   "in_delivered_copy": true,
+   "grounded_by": "business_facts: The homeowner does not need to be home for the quote if the tree can be seen from the street or the yard is open"
+  },
+  {
+   "claim": "cannot work on any tree in contact with power lines",
+   "in_delivered_copy": true,
+   "grounded_by": "excluded_services: Any tree in contact with power lines"
+  },
+  {
+   "claim": "decided at the on-site look",
+   "in_delivered_copy": true,
+   "grounded_by": "general rule in the prompt; no method promised"
+  },
+  {
+   "claim": "different approach than a healthy one",
+   "in_delivered_copy": true,
+   "grounded_by": "general rule in the prompt; no method promised"
+  }
+ ],
+ "removed_or_absent": {
+  "without damage to what is next to it": true,
+  "leaves the work area cleared": true,
+  "lowered": true
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "deliveries_in_recipient_mailbox": 1,
+ "mission_found_in_editor_mailbox": true,
+ "mission_fields_present": {
+  "service": true,
+  "city": true,
+  "page_goal": true,
+  "site_description": true,
+  "cta": true,
+  "keywords": true,
+  "areas_served": true,
+  "included_services": true,
+  "excluded_services": true,
+  "business_facts": true,
+  "local_notes": true,
+  "open_questions": true,
+  "review_rule": true
+ },
+ "all_fields_present": true
+}

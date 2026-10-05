@@ -1,1 +1,1 @@
-diff tests: 6 passed
+diff tests: 7 passed

@@ -59,7 +59,12 @@ function mapRequest(p) {
 async function intake(request, env) {
   const raw = await request.text();
   let p; try { p = JSON.parse(raw); } catch { return json({ error: 'body is not JSON' }, 400); }
-  const dedupe = await sha256(raw);
+  // Request key: an explicit idempotency key carried by the submission (customData.idempotency_key or the
+  // Idempotency-Key header). No native GoHighLevel submission id is assumed. Without one, a hash of the
+  // canonical JSON (sorted keys), so the same event serialized differently still maps to the same job.
+  const canon = v => Array.isArray(v) ? v.map(canon) : (v && typeof v === 'object') ? Object.fromEntries(Object.keys(v).sort().map(k => [k, canon(v[k])])) : v;
+  const explicitKey = (p.customData?.idempotency_key || request.headers.get('idempotency-key') || '').toString().trim();
+  const dedupe = explicitKey ? 'key:' + explicitKey : 'canon:' + await sha256(JSON.stringify(canon(p)));
   const existing = await env.DB.prepare('SELECT job_id, status FROM jobs WHERE dedupe_key=?').bind(dedupe).first();
   if (existing) { await event(env, existing.job_id, 'webhook_replay_ignored'); return json({ job_id: existing.job_id, status: existing.status, replay: true }); }
 
@@ -217,25 +222,29 @@ async function finishGeneration(env, job_id, detail) {
   }
 }
 
+const REVIEW_RULE = 'Any claim about the business or its methods must appear in the approved facts; remove or qualify anything else.';
 function missionText(r, job_id, link, d) {
+  const L = (t, a) => [t, ...(a.length ? a.map(x => `- ${x}`) : ['- none']), ''];
   return [`Job: ${job_id}`, `Site (fictional, for this test): ${r.site_name}`, `Service: ${r.service}`, `City: ${r.site_city}, ${r.site_state}`,
-    `Content type: service page`, `Keywords: ${r.keywords.join(', ')}`, '', 'Facts the page may state about the business:', ...r.business_facts.map(f => `- ${f}`),
-    '', 'Missing information flagged by the draft:', ...((d.open_questions || []).length ? d.open_questions.map(q => `- ${q}`) : ['- none']),
-    '', `Open the draft: ${link}`, '',
+    'Content type: service page', `Page goal: ${r.page_goal}`, `Site description: ${r.site_description}`, '',
+    ...L('Keywords:', r.keywords), ...L('Areas served:', r.areas_served), ...L('Included services:', r.included_services), ...L('Not included:', r.excluded_services),
+    ...L('Facts the page may state about the business:', r.business_facts), ...L('Local notes and their sources:', r.local_notes),
+    `Call to action: ${r.cta}`, '', ...L('Open questions flagged by the draft:', d.open_questions || []),
+    `Review rule: ${REVIEW_RULE}`, '', `Open the draft: ${link}`, '',
     `When the page can go out exactly as it stands, set Status to "Approved for delivery". It is then sent to ${r.delivery_recipient_email} with no further changes.`].join('\n');
 }
 function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 function missionHtml(r, job_id, link, d) {
-  const li = a => a.map(x => `<li>${esc(x)}</li>`).join('');
-  return `<div style="font-family:Georgia,serif;font-size:15px;line-height:1.55;color:#22261f;max-width:620px">
+  const li = a => `<ul style="margin-top:0">${(a.length ? a : ['none']).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+  const blk = (t, a) => `<p style="margin:12px 0 4px"><b>${t}</b></p>${li(a)}`;
+  return `<div style="font-family:Georgia,serif;font-size:15px;line-height:1.55;color:#22261f;max-width:640px">
 <p style="font-size:13px;color:#6b6a5c;margin:0 0 6px">Content job ${esc(job_id)}</p>
 <h2 style="font-size:21px;margin:0 0 14px">${esc(r.service)} service page, ${esc(r.site_city)}, ${esc(r.site_state)}</h2>
-<table style="border-collapse:collapse;font-size:14px;margin-bottom:14px">
-<tr><td style="padding:3px 14px 3px 0;color:#6b6a5c">Site</td><td>${esc(r.site_name)} (fictional, for this test)</td></tr>
-<tr><td style="padding:3px 14px 3px 0;color:#6b6a5c">Content type</td><td>Service page</td></tr>
-<tr><td style="padding:3px 14px 3px 0;color:#6b6a5c">Keywords</td><td>${esc(r.keywords.join(', '))}</td></tr></table>
-<p style="margin:0 0 4px"><b>Facts the page may state about the business</b></p><ul style="margin-top:0">${li(r.business_facts)}</ul>
-<p style="margin:0 0 4px"><b>Missing information flagged by the draft</b></p><ul style="margin-top:0">${li((d.open_questions || []).length ? d.open_questions : ['none'])}</ul>
+<p style="margin:0">Site: ${esc(r.site_name)} (fictional, for this test)<br>Content type: service page<br>Page goal: ${esc(r.page_goal)}<br>Site description: ${esc(r.site_description)}</p>
+${blk('Keywords', r.keywords)}${blk('Areas served', r.areas_served)}${blk('Included services', r.included_services)}${blk('Not included', r.excluded_services)}
+${blk('Facts the page may state about the business', r.business_facts)}${blk('Local notes and their sources', r.local_notes)}
+<p style="margin:12px 0 4px"><b>Call to action</b><br>${esc(r.cta)}</p>${blk('Open questions flagged by the draft', d.open_questions || [])}
+<p style="background:#f3efe0;padding:10px 12px"><b>Review rule:</b> ${esc(REVIEW_RULE)}</p>
 <p><a href="${esc(link)}" style="display:inline-block;background:#2f4a2c;color:#fff;padding:10px 18px;border-radius:4px;text-decoration:none">Open the draft</a></p>
 <p>When the page can go out exactly as it stands, set Status to <b>Approved for delivery</b>. It is then sent to ${esc(r.delivery_recipient_email)} with no further changes.</p></div>`;
 }
@@ -300,13 +309,15 @@ async function receipt(env, job_id) {
   }
   const hdr = n => (m.payload?.headers || []).find(h => h.name.toLowerCase() === n)?.value;
   const textPart = findPart(m.payload, 'text/plain');
+  const htmlPart = findPart(m.payload, 'text/html');
+  const htmlBody = htmlPart ? b64urlDecode(htmlPart.body.data) : '';
   const body = textPart ? b64urlDecode(textPart.body.data) : '';
   const proof = { checked_at: now(), mailbox, gmail_id: m.id, labelIds: m.labelIds, to: hdr('to'), subject: hdr('subject'), date: hdr('date'),
-    in_inbox: (m.labelIds || []).includes('INBOX'), body_chars: body.length, body };
+    in_inbox: (m.labelIds || []).includes('INBOX'), body_chars: body.length, html_list_items: (htmlBody.match(/<li[\s>]/g) || []).length, body };
   // The receiving side may re-wrap lines, so compare text blocks with whitespace collapsed.
   const norm = t => String(t).replace(/\s+/g, ' ').trim();
   const nb = norm(body), ap = JSON.parse(job.approved_json);
-  const list = [ap.title_tag, ap.meta_description, ap.h1, ...[].concat(ap.intro), ...ap.sections.flatMap(x => [x.heading, ...x.paragraphs]), ...ap.faq.flatMap(f => [f.question, f.answer]), ap.cta.heading, ap.cta.text, ap.cta.button_label];
+  const list = [ap.title_tag, ap.meta_description, ap.h1, ...[].concat(ap.intro), ...ap.sections.flatMap(x => [x.heading, ...x.paragraphs, ...(x.bullets || [])]), ...ap.faq.flatMap(f => [f.question, f.answer]), ap.cta.heading, ap.cta.text, ap.cta.button_label];
   const missing = list.filter(t => !nb.includes(norm(t)));
   Object.assign(proof, { blocks_total: list.length, blocks_found: list.length - missing.length, missing_blocks: missing.slice(0, 5), body_equals_approved_copy: missing.length === 0 });
   await env.DB.prepare('UPDATE jobs SET receipt_json=? WHERE job_id=?').bind(JSON.stringify(proof), job_id).run();
@@ -319,7 +330,7 @@ function b64(str) { const bytes = new TextEncoder().encode(str); let bin = ''; f
 
 export function pageText(c) {
   const L = [`TITLE TAG: ${c.title_tag}`, `META DESCRIPTION: ${c.meta_description}`, '', `# ${c.h1}`, '', ...[].concat(c.intro).flatMap(p => [p, ''])];
-  for (const s of c.sections) { L.push(`## ${s.heading}`, ''); for (const p of s.paragraphs) L.push(p, ''); }
+  for (const s of c.sections) { L.push(`## ${s.heading}`, ''); for (const p of s.paragraphs) L.push(p, ''); if (s.bullets?.length) { for (const b of s.bullets) L.push(`- ${b}`); L.push(''); } }
   L.push('## Frequently asked questions', ''); for (const f of c.faq) L.push(`Q: ${f.question}`, `A: ${f.answer}`, '');
   L.push(`## ${c.cta.heading}`, '', c.cta.text, '', `[${c.cta.button_label}]`);
   return L.join('\n');
@@ -329,7 +340,7 @@ function pageHtml(c, r) {
   return `<div style="font-family:Georgia,serif;font-size:16px;line-height:1.6;color:#22261f;max-width:640px">
 <p style="font-size:13px;color:#6b6a5c">Title tag: ${esc(c.title_tag)}<br>Meta description: ${esc(c.meta_description)}</p>
 <h1 style="font-size:26px">${esc(c.h1)}</h1>${ps(c.intro)}
-${c.sections.map(s => `<h2 style="font-size:20px">${esc(s.heading)}</h2>${ps(s.paragraphs)}`).join('')}
+${c.sections.map(s => `<h2 style="font-size:20px">${esc(s.heading)}</h2>${ps(s.paragraphs)}${s.bullets?.length ? `<ul>${s.bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}`).join('')}
 <h2 style="font-size:20px">Frequently asked questions</h2>${c.faq.map(f => `<p><b>${esc(f.question)}</b><br>${esc(f.answer)}</p>`).join('')}
 <h2 style="font-size:20px">${esc(c.cta.heading)}</h2><p>${esc(c.cta.text)}</p><p><b>[${esc(c.cta.button_label)}]</b></p></div>`;
 }

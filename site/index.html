@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Spokane Page, Delivered</title>
-<meta name="description" content="One local service page request, written by Claude, edited by a person and delivered by email, shown from one recorded run.">
+<meta name="description" content="One local service page request: written by Claude, corrected by our AI assistant in a review page, delivered by email. One recorded test run.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +27,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 /* top */
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font:500 14px/1.3 var(--sans);color:var(--soft)}
 .top img{width:22px;height:22px;vertical-align:-5px;margin-right:8px}
-.intro{padding:30px 0 34px}
-.intro h1{font:720 clamp(36px,6.2vw,84px)/.98 var(--sans);font-stretch:78%;letter-spacing:-.015em;margin:0 0 26px}
+.intro{padding:14px 0 22px}
+.intro h1{font:720 clamp(32px,4.4vw,56px)/1 var(--sans);font-stretch:78%;letter-spacing:-.015em;margin:0 0 12px}
 .deck{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px;align-items:start}
-.intro p{margin:0;max-width:62ch;color:var(--ink);font-size:19px;line-height:1.55}
+.intro p{margin:0;max-width:66ch;color:var(--ink);font-size:17.5px;line-height:1.5}
 .scenario{font:15px/1.5 var(--sans)!important;color:var(--soft)!important;border-left:3px solid var(--pine);padding:2px 0 2px 14px}
 
 /* route slip */
@@ -72,6 +72,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .page .faq div{padding:14px 0;border-bottom:1px solid var(--rule)}
 .page .faq dt{margin:0 0 4px!important}
 .page p{margin:0 0 14px;max-width:68ch}
+.page ul.bul{margin:0 0 16px;padding-left:22px;max-width:66ch}
+.page ul.bul li{margin:0 0 6px}
 .page .faq dt{font:650 17px/1.35 var(--sans);margin:18px 0 4px}
 .page .faq dd{margin:0 0 6px;max-width:68ch}
 .page .cta{margin:40px -48px -44px;padding:34px 48px 40px;background:var(--pine);color:#eef4ef}
@@ -90,6 +92,21 @@ mark.edit{background:var(--pencil-wash);color:inherit;box-shadow:inset 0 -2px 0 
 .rail{position:sticky;top:20px;display:flex;flex-direction:column;gap:22px}
 .card{background:var(--sheet);border:1px solid var(--rule);padding:20px 22px;border-radius:2px}
 .card h2{font:700 19px/1.25 var(--sans);margin:0 0 12px}
+details.card{padding:0}
+details.card > summary{list-style:none;cursor:pointer;padding:18px 22px;font:700 19px/1.25 var(--sans)}
+details.card > summary::-webkit-details-marker{display:none}
+details.card > summary::after{content:'+';float:right;color:var(--faint);font-weight:400}
+details.card[open] > summary::after{content:'\2212'}
+details.card > .cb{padding:0 22px 20px}
+.fix{border-top:1px solid var(--rule);padding:12px 0}
+.fix:first-of-type{border-top:0}
+.fix .pb{font:14px/1.45 var(--sans);margin:0 0 6px}
+.fix .k{font:600 13px/1.4 var(--sans)}
+.fix .k .ok{font-weight:650}
+.fix .pb b{font-weight:650}
+.linkbtn{background:none;border:0;padding:0;font:600 14px/1.4 var(--sans);color:var(--pine);text-decoration:underline;cursor:pointer}
+details.snip{margin:30px 0 0}
+details.snip summary{cursor:pointer;font:600 14px/1.4 var(--sans);color:var(--soft);margin-bottom:10px}
 .card .who{font:14px/1.45 var(--sans);color:var(--soft);margin:0 0 14px}
 .pair{margin:0 0 14px}
 .pair .k{font:600 13px/1.3 var(--sans);color:var(--faint);margin-bottom:4px}
@@ -153,7 +170,7 @@ details .calls{padding:0 18px 16px}
 
 @media (max-width:1020px){
   .proof{grid-template-columns:minmax(0,1fr)}
-  .rail{position:static;order:-1}
+  .rail{position:static}
   .flowgrid{grid-template-columns:minmax(0,1fr)}
   .flowgrid > div:first-child{position:static}
 }
@@ -182,12 +199,11 @@ details .calls{padding:0 18px 16px}
 <div class="wrap">
   <div class="top"><span><img src="favicon.svg" alt="">The AI Pipe</span><span>Prepared for Website Rental Coaching</span></div>
   <header class="intro">
-    <h1>A Spokane tree removal page, from form to inbox</h1>
-    <div class="deck"><p id="lede">A service page request arrived as a GoHighLevel-format webhook. Claude wrote the page through two narrow tools, an editor corrected it in a review page, and only the approved copy went out by email to the site's renter. Everything below comes from that one recorded run.</p>
+    <h1>A Spokane service page, delivered.</h1>
+    <div class="deck"><p id="lede">One content request, written by Claude through two narrow tools, corrected by an editor in a review page, and sent to the site's renter only once approved. Everything below is that one recorded run.</p>
     <p class="scenario" id="scenario">Scenario: Prairie Line Tree Removal and its 555 phone number are invented, Spokane, WA is real, the content is one service page, and every address is a test address we control.</p></div>
   </header>
 
-  <div class="route" id="route"></div>
   <main class="proof" id="proof">
     <div class="loading">Loading the recorded run.</div>
   </main>
@@ -197,6 +213,7 @@ details .calls{padding:0 18px 16px}
   <div class="wrap">
     <h2 class="sec">How the job moved</h2>
     <p class="lead">One job record per request, frozen on arrival. No agent stays running while the editor works: the draft waits, and the approval is what releases the email.</p>
+    <div class="route" id="route"></div>
     <div class="flowgrid" id="flow"></div>
   </div>
 </section>
@@ -207,7 +224,7 @@ details .calls{padding:0 18px 16px}
 
 <script src="diff.js"></script>
 <script>
-const SHOWCASE = 'wrc-20261004-579c18';
+const SHOWCASE = 'wrc-20261005-1c30b7';
 const REPO = 'https://github.com/fred1433/demo-wrc-relay';
 const RUN = new URLSearchParams(location.search).get('run') || SHOWCASE;
 const API = 'api/public/' + RUN;
@@ -239,15 +256,15 @@ function renderPage(c, edits, site){
   const mast = `<div class="mast"><span class="wm"><svg viewBox="0 0 22 26" aria-hidden="true"><path d="M11 1 3 12h4l-5 7h7v6h4v-6h7l-5-7h4z" fill="#cfe0d3"/></svg>${esc(site)}</span><span class="call">Get a free quote</span></div>`;
   const title = hl(c.title_tag), meta = hl(c.meta_description), h1 = hl(c.h1);
   const intro = [].concat(c.intro).map(p => `<p>${hl(p)}</p>`).join('');
-  const secs = c.sections.map(s => `<h2>${hl(s.heading)}</h2>${s.paragraphs.map(p => `<p>${hl(p)}</p>`).join('')}`).join('');
+  const secs = c.sections.map(s => `<h2>${hl(s.heading)}</h2>${s.paragraphs.map(p => `<p>${hl(p)}</p>`).join('')}${(s.bullets||[]).length ? `<ul class="bul">${s.bullets.map(b => `<li>${hl(b)}</li>`).join('')}</ul>` : ''}`).join('');
   const faq = c.faq.map(f => `<div><dt>${hl(f.question)}</dt><dd>${hl(f.answer)}</dd></div>`).join('');
   const ctaH = hl(c.cta.heading), ctaT = hl(c.cta.text), btn = hl(c.cta.button_label);
-  return `<div class="snippet"><div class="lbl">How it reads in search results</div>
-    <div class="t">${title}</div><div class="d">${meta}</div>
-    <div class="n">Title ${c.title_tag.length} characters, description ${c.meta_description.length} characters</div></div>
-    <article class="page">${mast}<div class="hero"><h1>${h1}</h1>${intro}<span class="btn">${esc(c.cta.button_label)}</span></div>
+  return `<article class="page">${mast}<div class="hero"><h1>${h1}</h1>${intro}<span class="btn">${esc(c.cta.button_label)}</span></div>
     ${secs}<h2>Frequently asked questions</h2><dl class="faq">${faq}</dl>
-    <div class="cta"><h2>${ctaH}</h2><p>${ctaT}</p><span class="btn">${btn}</span></div></article>`;
+    <div class="cta"><h2>${ctaH}</h2><p>${ctaT}</p><span class="btn">${btn}</span></div></article>
+    <details class="snip"><summary>Title tag and meta description</summary><div class="snippet"><div class="lbl">How it reads in search results</div>
+    <div class="t">${title}</div><div class="d">${meta}</div>
+    <div class="n">Title ${c.title_tag.length} characters, description ${c.meta_description.length} characters</div></div></details>`;
 }
 
 function renderBrief(r){
@@ -300,73 +317,84 @@ function render(j){
   const body = j.receipt?.body || '';
   const proof = document.getElementById('proof');
   if (!sent) document.getElementById('lede').textContent = 'A service page request arrived as a GoHighLevel-format webhook. Claude wrote the page through two narrow tools, and the draft now waits for the editor to correct and approve it. Only the approved copy will go out by email to the site\'s renter. Everything below comes from that one recorded run.';
+  const gen = j.model || {};
   const stops = [
     ['done','Request received', t(j.received_at)+' ET'],
-    [j.draft_at?'done':'todo','Claude drafted the page', j.draft_at ? 'in '+dur(j.gen_started_at, j.draft_at) : 'pending'],
-    [j.approved_at?'person':'todo', j.approved_at?'Editor corrected and approved':'Editor reviewing', j.approved_at ? t(j.approved_at)+' ET' : 'nothing sent until approval'],
+    [j.draft_at?'done':'todo','Draft saved by Claude', j.draft_at ? t(j.draft_at)+' ET' : 'pending'],
+    [j.approved_at?'person':'todo', j.approved_at?'Corrected and approved':'Editor reviewing', j.approved_at ? t(j.approved_at)+' ET' : 'nothing sent until approval'],
     [sent?'done':'todo','In the renter\'s inbox', sent ? t(j.sent_at)+' ET' : 'not yet'],
   ];
   document.getElementById('route').innerHTML = stops.map(s=>`<div class="stop ${s[0]}"><b>${s[1]}</b><time>${s[2]}</time></div>`).join('');
 
+  // The editor's reasons, from the review log of this run (recette/editor_showcase_v4.json in the repository).
+  const REASONS = [
+    ['without damage', 'Promised an outcome the facts do not support.', 'Cut the promise; the sentence keeps who calls and why.'],
+    ['cleared of what was cut', 'Promised cleanup beyond what the facts say.', 'Kept only what the facts say: branches and trunk wood are hauled away.'],
+    ['filling the hole', 'Pointed the reader to another section instead of saying it.', 'Stated the fact in place.'],
+    ['before the removal date', 'Avista needs three business days; a reader could book the removal first.', 'Added the order of steps and where the rule comes from.'],
+    ['before you book the removal', 'The FAQ answer repeated the permit paragraph.', 'Answered the question in one line and gave the next step.'],
+  ];
+  const reasonFor = e => REASONS.find(x => (e.after||'').includes(x[0]) || (e.before||'').includes(x[0]));
+  const OPEN = matchMedia('(min-width: 1021px)').matches ? ' open' : '';
   const editCard = j.approved ? `
-    <div class="card">
-      <h2>The editor's corrections</h2>
-      <p class="who">For this test run the editor was our AI assistant; no person edited this run. It worked in the same review page your editor would use: ${edits.length} passage${edits.length===1?'':'s'} changed before approval.</p>
-      ${edits.map(e=>`
-        <div class="pair"><div class="k">${esc(e.label)}</div><div class="diffbox">${diffHtml(e.parts)}</div>
-        ${sent ? `<div class="k" style="margin-top:6px">${e.after && body && body.replace(/\s+/g,' ').includes(e.after.replace(/\s+/g,' ')) ? '<span class="ok">Found word for word in the email the renter received.</span>' : (e.after ? 'Not found in the received email.' : 'Removed in the received email too.')}</div>` : ''}</div>
-      `).join('')}
+    <details class="card"${OPEN}><summary>The editor's corrections (${edits.length})</summary><div class="cb">
+      <p class="who">For this test run the editor was our AI assistant; no person edited this run. It worked in the review page your editor would use, with the rule from the mission: any claim about the business or its methods must appear in the approved facts.</p>
+      ${edits.map(e=>{ const rs = reasonFor(e); return `
+        <div class="fix">${rs ? `<p class="pb"><b>Problem.</b> ${esc(rs[1])}<br><b>Decision.</b> ${esc(rs[2])}</p>` : `<p class="pb"><b>${esc(e.label)}</b></p>`}
+        <div class="diffbox">${diffHtml(e.parts)}</div>
+        ${sent ? `<div class="k" style="margin-top:4px">${e.after && body && body.replace(/\s+/g,' ').includes(e.after.replace(/\s+/g,' ')) ? '<span class="ok">Found word for word in the email received.</span>' : (e.after ? 'Not found in the received email.' : 'Removed in the received email too.')}</div>` : ''}</div>`; }).join('')}
+      <button class="linkbtn" data-goto="changes">See every change side by side</button>
       ${j.editor_note ? `<div class="enote"><b>Editor's note on the draft's open questions</b><br>${esc(j.editor_note)}</div>` : ''}
-    </div>` : `
-    <div class="card">
-      <h2>With the editor</h2>
-      <p class="waiting">The draft is waiting in the editor's review copy. Nothing is sent until the editor sets Status to Approved for delivery.</p>
-    </div>`;
+    </div></details>` : `
+    <div class="card"><h2>With the editor</h2><p class="waiting">The draft is waiting in the editor's review copy. Nothing is sent until the editor sets Status to Approved for delivery.</p></div>`;
 
   const mailCard = sent ? `
-    <div class="card mail">
-      <h2>Delivered</h2>
+    <details class="card mail"${OPEN}><summary>Delivered and received</summary><div class="cb">
       <table>
         <tr><td>To</td><td>${esc(j.approved_recipient)} (renter, test address)</td></tr>
         <tr><td>Subject</td><td>${esc(j.receipt?.subject || '')}</td></tr>
         <tr><td>Sent</td><td>${t(j.sent_at)} ET, Gmail message ${esc(j.gmail_send?.id)}</td></tr>
         <tr><td>Read in</td><td>${esc(j.receipt?.mailbox === 'recipient mailbox (separate account)' ? "the recipient's own mailbox, a separate test account" : 'the same test mailbox, plus-address')}</td></tr>
         <tr><td>Inbox</td><td>${j.receipt?.in_inbox ? '<span class="ok">Arrived</span>, labels '+esc((j.receipt.labelIds||[]).join(', ')) : 'Not checked yet'}</td></tr>
-        <tr><td>Content</td><td>${j.receipt?.blocks_total ? `<span class="ok">${j.receipt.blocks_found} of ${j.receipt.blocks_total}</span> text blocks of the approved copy found word for word` : (j.receipt?.body_equals_approved_copy ? '<span class="ok">Identical</span> to the approved copy' : 'Not compared yet')}</td></tr>
-      </table>
-    </div>` : '';
+        <tr><td>Content</td><td>${j.receipt?.blocks_total ? `<span class="ok">${j.receipt.blocks_found} of ${j.receipt.blocks_total}</span> text blocks of the approved copy found word for word${j.receipt.html_list_items ? `, the quote checklist as a real list (${j.receipt.html_list_items} items)` : ''}` : 'Not compared yet'}</td></tr>
+      </table></div></details>` : '';
 
   const times = [
-    ['Claude writing the page', dur(j.gen_started_at, j.draft_at)],
-    ['Draft waiting for the editor', dur(j.mission_sent_at, j.approved_at)],
-    ['Approval to sent email', dur(j.approved_at, j.sent_at)],
+    ['Request received to draft saved', dur(j.received_at, j.draft_at), 'the writer was started by hand, and the machine restarted once in between'],
+    ['Mission sent to approval', dur(j.mission_sent_at, j.approved_at), ''],
+    ['Approval to email sent', dur(j.approved_at, j.sent_at), ''],
   ].filter(x=>x[1]);
-  const timeCard = `<div class="card"><h2>Observed on this run</h2><ul class="times">
-    ${times.map(x=>`<li><span>${x[0]}</span><b>${x[1]}</b></li>`).join('')}
-    <li><span>Editor saves</span><b>${j.editor_saves || 0} save${j.editor_saves===1?'':'s'}${j.approved_at?', approval included':''}</b></li></ul></div>`;
+  const timeCard = `<details class="card"${OPEN}><summary>Observed on this run</summary><div class="cb"><ul class="times">
+    ${times.map(x=>`<li><span>${x[0]}${x[2]?`<br><small style="color:var(--faint)">${x[2]}</small>`:''}</span><b>${x[1]}</b></li>`).join('')}
+    <li><span>Editor saves</span><b>${j.editor_saves || 0}</b></li></ul></div></details>`;
 
+  const allChanges = edits.map(e => `<div class="fix"><p class="pb"><b>${esc(e.label)}</b></p><div class="diffbox">${e.parts.map(p => p.t === '=' ? esc(p.s) : p.t === '-' ? `<del>${esc(p.s)}</del>` : `<ins>${esc(p.s)}</ins>`).join('')}</div></div>`).join('');
   proof.innerHTML = `
     <div class="sheet">
       <div class="tabs" role="tablist">
         <button role="tab" aria-selected="true" data-p="final">${sent ? 'Delivered page' : 'Current draft'}</button>
         <button role="tab" aria-selected="false" data-p="draft">Claude's first draft</button>
+        <button role="tab" aria-selected="false" data-p="changes">All changes</button>
         <button role="tab" aria-selected="false" data-p="brief">The brief</button>
       </div>
-      <div class="panel" data-panel="final">${sent ? '<p class="note">The text exactly as the renter received it; the site header and search preview are drawn here for reading. Words the editor added are marked in blue.</p>' : ''}${renderPage(finalCopy, edits, r.site_name)}</div>
-      <div class="panel" data-panel="draft" hidden><p class="note">Saved by Claude through save_content_draft, before any human touched it. It also left these questions for the editor, outside the page:</p>
+      <div class="panel" data-panel="final">${renderPage(finalCopy, edits, r.site_name)}<p class="note" style="margin-top:18px">The text exactly as the renter received it; the site header is drawn here for reading. Words the editor added are marked in blue.</p></div>
+      <div class="panel" data-panel="draft" hidden><p class="note">Saved by Claude through save_content_draft, before the editor's pass. It also left these questions for the editor, outside the page:</p>
         <ul class="note">${(j.draft.open_questions||[]).map(q=>`<li>${esc(q)}</li>`).join('')}</ul>${renderPage(j.draft, [], r.site_name)}</div>
+      <div class="panel" data-panel="changes" hidden><p class="note">Every passage that differs between Claude's draft and the approved copy, matched block by block. Struck words were removed, blue words were added.</p>${allChanges || '<p class="note">No changes.</p>'}</div>
       <div class="panel" data-panel="brief" hidden>${renderBrief(r)}</div>
     </div>
     <aside class="rail">${editCard}${mailCard}${timeCard}</aside>`;
 
-  proof.querySelectorAll('[role=tab]').forEach(b => b.onclick = () => {
-    proof.querySelectorAll('[role=tab]').forEach(x => x.setAttribute('aria-selected', x === b));
-    proof.querySelectorAll('[data-panel]').forEach(p => p.hidden = p.dataset.panel !== b.dataset.p);
-  });
+  const show = name => {
+    proof.querySelectorAll('[role=tab]').forEach(x => x.setAttribute('aria-selected', x.dataset.p === name));
+    proof.querySelectorAll('[data-panel]').forEach(p => p.hidden = p.dataset.panel !== name);
+  };
+  proof.querySelectorAll('[role=tab]').forEach(b => b.onclick = () => show(b.dataset.p));
+  proof.querySelectorAll('[data-goto]').forEach(b => b.onclick = () => { show(b.dataset.goto); proof.querySelector('.sheet').scrollIntoView({behavior:'smooth'}); });
 
   // flow section
   const ev = j.events.filter((e,i,a) => LABELS[e.kind] && !(e.kind==='receipt_checked' && a.slice(i+1).some(x=>x.kind==='receipt_checked')));
-  const sheetCols = [['Job', j.job_id.replace('wrc-20261004-','')], ['Received', t(j.received_at)], ['City', r.site_city+', '+r.site_state], ['Service', r.service], ['Status', j.status], ['Approved', t(j.approved_at)], ['Sent', t(j.sent_at)]];
+  const sheetCols = [['Job', j.job_id.slice(-6)], ['Received', t(j.received_at)], ['City', r.site_city+', '+r.site_state], ['Service', r.service], ['Status', j.status], ['Approved', t(j.approved_at)], ['Sent', t(j.sent_at)]];
   const toolCalls = j.mcp.map(m => {
     let args = m.args, result = m.result;
     if (m.tool === 'save_content_draft' && args?.content) args = { job_id: args.job_id, content: '(the full draft shown in the first draft tab)' };
@@ -380,7 +408,7 @@ function render(j){
         <ol class="timeline">${ev.map(e=>`<li class="${/editor_saved|approved/.test(e.kind)?'person':''}"><time>${t(e.at)}</time><span>${LABELS[e.kind]}</span></li>`).join('')}</ol></div>
     </div>
     <div>
-      <div class="block"><h3>The job row</h3><p class="sub">One row per request, the way a Google Sheet would hold it (times in ET). Editor, recipient and the Gmail id are in the <a href="${API}/sheet.csv">full row as CSV</a>.</p>
+      <div class="block"><h3>The job row</h3><p class="sub">One row per request, the way a Google Sheet would hold it (times in ET); a real Sheet was not connected for this run. Editor, recipient and the Gmail id are in the <a href="${API}/sheet.csv">full row as CSV</a>.</p>
         <div class="gridwrap"><table class="grid"><tr><th class="rowh"></th>${sheetCols.map(c=>`<th>${c[0]}</th>`).join('')}</tr>
         <tr><td class="rowh">2</td>${sheetCols.map(c=>`<td>${c[0]==='Status'?`<span class="st">${esc(c[1])}</span>`:esc(c[1])}</td>`).join('')}</tr></table></div></div>
       <div class="block"><h3>What the editor received</h3><p class="sub">For this test, your editor receives a review link by email, not access to anything else.</p>
@@ -393,10 +421,10 @@ function render(j){
         <p class="sub" style="margin-top:4px">Claude saw two tools and nothing else. Sending, sharing, approval and the choice of recipient stay in ordinary code it cannot reach.</p>${toolCalls}</div></details></div>
       <div class="block"><h3>Technical details</h3><ul class="facts">
         <li>Run from a demo submission; GoHighLevel hookup not yet tested. The payload follows the workflow Webhook action format, with each field mapped from Custom Data.</li>
-        <li>Written by ${esc(j.model?.model || 'claude-sonnet-5-5')} through Claude Code in print mode on a Claude subscription, connected to the relay's MCP server: ${j.model?.num_turns || ''} turns, ${Math.round((j.model?.duration_ms||0)/1000)} s. The relay can also call the Claude API directly with the MCP connector. Your own instructions and approved examples would be the next step.</li>
+        <li>Production host: the Worker calls the Claude API itself when a request arrives (Messages API with the MCP connector, ${esc(gen.model || 'claude-sonnet-5-5')}, capped). This test run was written differently, and said as is: Claude Code in print mode on a Claude subscription, started by hand, with the same prompt and the same MCP server. Generation time as measured by the Claude Code CLI: ${Math.round((gen.duration_ms||0)/1000)} s over ${gen.num_turns || ''} turns. Claude API; your own instructions and approved examples would be the next step.</li>
         <li>The job record lives in a database table and the editor works in a review page. A Google Sheet and a Google Doc were not connected for this run.</li>
         <li>States: in review, approved, sending, sent, needs attention. A replayed submission or approval creates nothing new; an edit after approval is refused; a missing field or a failed step stops at needs attention.</li>
-        <li>Local notes were written by us for this test. The power-line step and Avista's number, (800) 227-9187, were added by the editor from Avista's tree-trimming pages on myavista.com. No city rules or statistics were added.</li>
+        <li>Local sources were chosen by hand and put in the form with their links: the <a href="https://my.spokanecity.org/urbanforestry/permits/">City of Spokane Urban Forestry permits page</a> and <a href="https://www.myavista.com/safety/tree-trimming/frequently-asked-questions">Avista's tree trimming FAQ</a>, both read on 4 October 2026. The other local notes were written by us for this test.</li>
         <li>Code: <a href="${REPO}">${REPO.replace('https://','')}</a>. The receipt is read in the recipient's own mailbox, a separate test account from the sender.</li>
         <li>Online generation is switched off on this deployment: the page shows the recorded run, and no public address can start a model call.</li>
       </ul></div>

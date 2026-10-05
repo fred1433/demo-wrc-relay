@@ -1,0 +1,10 @@
+1440 service page h1 top at load 437 viewport 900
+1440 Claude's first draft ['draft']
+1440 All changes ['changes']
+1440 The brief ['brief']
+1440 mcp open True see-all-changes -> ['changes'] scrollW 1440 errs []
+390 service page h1 top at load 559 viewport 844
+390 Claude's first draft ['draft']
+390 All changes ['changes']
+390 The brief ['brief']
+390 mcp open True see-all-changes -> ['changes'] scrollW 390 errs []

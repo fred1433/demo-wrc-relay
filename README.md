@@ -1,12 +1,12 @@
 # WRC content relay (demo)
 
-Live page: https://theaipipe.com/demos/wrc-relay/ . It reads the showcase job `wrc-20261004-579c18` from the Worker's public record.
+Live page: https://theaipipe.com/demos/wrc-relay/ . It reads the showcase job `wrc-20261005-1c30b7` from the Worker's public record.
 
 ## What runs
 
 One Cloudflare Worker (`src/worker.js`):
 
-1. `POST /demos/wrc-relay/api/ghl/webhook` takes a GoHighLevel workflow Webhook payload. It needs a shared secret (`x-relay-secret` or `?key=`) and is capped at 20 requests per day (429 above that). The request is frozen in D1. The same body sent twice returns the same job (`dedupe_key` = SHA-256 of the body).
+1. `POST /demos/wrc-relay/api/ghl/webhook` takes a GoHighLevel workflow Webhook payload. It needs a shared secret (`x-relay-secret` or `?key=`) and is capped at 20 requests per day (429 above that). The request is frozen in D1. Request key: an explicit idempotency key carried by the submission (`customData.idempotency_key` or an `Idempotency-Key` header). No native GoHighLevel submission id is assumed. Without a key, the fallback is a SHA-256 of the canonical JSON with sorted keys, so the same event serialized differently still maps to the same job.
 2. The writer is Claude working through the relay's own MCP server (`/api/mcp`, token scoped to one job). Claude only gets two tools: `read_content_brief(job_id)` and `save_content_draft(job_id, content)`. Sharing, approval, choice of recipient and sending are ordinary code Claude cannot reach. There are two ways to run the writer:
    - **Deployed setting: external writer** (`GENERATION_MODE = "external"`). The job waits at `queued`, then `scripts/generate_with_subscription.py <job> <model>` runs it. That script claims the job, runs `claude -p` on a Claude subscription (no API key) with the MCP server passed through `--mcp-config`, saves the CLI output in `recette/`, and hands the job back. The showcase was written this way, with `claude-sonnet-5-5`: 3 turns, 77 s.
    - **In-Worker API path.** The Worker calls the Claude API with the MCP connector (`claude-sonnet-5-5`, effort high, 3 per day, 8 in total). It is switched off here: `GENERATION_ENABLED = "false"` and there is no Anthropic key among the Worker's secrets. Turning it on would need a key dedicated to this deliverable (`wrc-relay-demo`).
@@ -33,27 +33,34 @@ States: `queued`, `generating`, `in_review`, `approved`, `sending`, `sent`, `nee
 
 In GoHighLevel the setup is a workflow trigger "Form Submitted", filtered on the request form, followed by a Webhook action to the URL above with the Custom Data keys of `fixtures/ghl_spokane_v3.json`. **This was not tested against a real GoHighLevel account.** Every run came from the fixtures. Addresses in the fixtures are placeholders; put your own test addresses in before running.
 
-## Showcase run (`wrc-20261004-579c18`)
+## Showcase run (`wrc-20261005-1c30b7`)
 
-- The form includes a fictional phone number, (509) 555-0142. The local notes were written by us. The South Hill alleys and narrow side yards were checked. The tall pines on Five Mile Prairie are as local tree services describe them.
-- The draft was written by `claude -p` on a subscription. CLI output: `recette/generation_wrc-20261004-579c18_claude_p.json`.
-- The editor step was done by our AI assistant (no person edited this run) through the review page: `recette/editor_showcase_v3.py`, `recette/editor_showcase_v3.json`. Two edits:
-  1. The quote-preparation section no longer offers to send photos, which the form does not mention.
-  2. The not-included section gained the power-line step, with Avista's published number (800) 227-9187 and its no-cost inspection and service-line disconnect. Source: myavista.com, tree trimming pages (Tree Assessments, FAQ), cross-checked by search on 04/10/2026. The site itself refused a direct fetch from here.
-- The open questions were handled in the editor's note: insurance, timeframes, storm work, address and permits are not in the form, so the page stays silent on them.
-- Delivered to the recipient test address, read in that mailbox: in the inbox, 41 of 41 text blocks found word for word.
+- The form has a fictional phone number. Its local notes carry their sources: the City of Spokane Urban Forestry permits page and Avista's tree trimming FAQ. Both were read on 4 October 2026 through a reader proxy, because neither site answers this machine directly. Their exact wording is in `fixtures/ghl_spokane_v4.json`. The other notes are marked "written by us for this test".
+- The writer was `claude -p` with `claude-sonnet-5-5` on a Claude subscription, with no API spend, through the relay's MCP server, started by hand: 3 turns, 26 s according to the CLI. A machine restart interrupted the first attempt, and the job was requeued (logged as an event). Output: `recette/generation_wrc-20261005-1c30b7_claude_p.json`.
+- The editor step was done by our AI assistant (no person edited this run) in the review page: `recette/editor_showcase_v4.py` and `recette/editor_showcase_v4.json`. Five edits, each with its reason:
+  - removed an outcome promise;
+  - removed cleanup beyond the facts;
+  - replaced an internal cross-reference with the fact itself;
+  - added that the Avista service drop must be booked before the removal date, with the source;
+  - turned a FAQ answer that repeated the permit paragraph into the next step.
+  The editor's note handles the open questions.
+- The edits were saved first. Then two approvals were sent at the same moment: one froze the copy, the other returned `already` (`two_simultaneous_approvals`). The recipient mailbox holds exactly one delivery.
+- The receipt was read in the recipient's own mailbox: 48 of 48 text blocks found word for word, and the quote checklist arrived as a real list (7 `<li>`).
+- The editor's mission was read back from the editor mailbox. Every field of the frozen request is present, along with the review rule: `recette/verify_v4.json`.
+
+Earlier runs (`wrc-20261004-579c18`, `wrc-20261004-c9d90b`) stay in the database and in `recette/`, and are no longer public.
 
 ## Quality grid on the approved showcase copy
 
 | Criterion | Result |
 |---|---|
-| Service page, not an article | Yes: one service, one city, FAQ, call to action |
+| Service page, not an article | Yes |
 | Exact services | Yes: included and excluded services as in the form |
-| Local usefulness | Yes: areas named, South Hill alley access, narrow gates, pines near houses, what to do near Avista lines |
-| Commercial accuracy | Yes: no invented insurance, years, prices, hours or photos; phone from the form |
-| Natural keywords | Yes: all five, the main ones in headings |
-| Complete deliverable | Yes: title 48 chars, meta 145, H1, 7 sections, 6 FAQ, call to action with phone |
-| No blocking correction | Yes after the editor's two edits |
+| Local usefulness | Yes: areas named; alley and side-yard access; City of Spokane right-of-way permit rule and Urban Forestry number; Avista service drop, with hours and three business days' notice |
+| Commercial accuracy | Yes: every method or commitment sentence is mapped to a line of the approved facts in `recette/method_claims_v4.json`; the removed promises are checked absent |
+| Natural keywords | Yes: all five |
+| Complete deliverable | Yes: title 48 chars, meta 144, H1, 7 sections, a 7-item checklist, 6 FAQ, call to action with the phone number |
+| No blocking correction | Yes after the editor's pass |
 
 ## Recette (evidence in `recette/`)
 
@@ -66,8 +73,17 @@ In GoHighLevel the setup is a workflow trigger "Form Submitted", filtered on the
 | Two requests from the same contact | Pass: two jobs, separate cities and recipients |
 | Edit after approval does not change the delivery | Pass: 409, frozen copy unchanged |
 | Missing data or failed step -> `needs_attention` | Pass (`intake_missing_city.json`, `intake_forced_failure.json`, `generation_disabled_result.txt`) |
-| Draft vs approved diff | `node tests/diff.test.js`: 6 cases (inserted paragraph, "Dr." and "a.m.", text added to the CTA, removed paragraph, identical copies, grouped rewrite) |
+| Draft vs approved diff | `node tests/diff.test.js`: 7 cases (inserted paragraph, "Dr." and "a.m.", text added to the CTA, removed paragraph, identical copies, grouped rewrite, bullets) |
+| Deduplication | `recette/dedupe_tests.json`: same event replayed -> same job; same event serialized differently -> same job (with and without a key); identical submissions with different keys -> two jobs |
+| Two simultaneous approvals | One freeze, one send (`recette/editor_showcase_v4.json`, `recette/verify_v4.json`) |
+| Mission complete | Every frozen field found in the mission received by the editor mailbox (`recette/verify_v4.json`) |
+| Page interactions | Tabs, "See every change", fold-outs; no horizontal scroll at 1440 and 390 (`recette/interaction_checks.txt`) |
 | Send timeout leaves `sending` | Not exercised; code path in `deliver()` |
+
+## Not done (needs Frederic)
+
+- **A real Google Sheet and Google Doc, a person editing the Doc, and an installable Apps Script trigger on the Sheet's status column.** No Google token on this machine has Sheets, Docs or Drive scope (the old rclone Drive token is revoked). That needs one OAuth consent, and the human edit needs a person. Until then the page says that the editor was our AI assistant and that no Sheet or Doc was connected.
+- **Automatic generation by the Worker through the Messages API.** The code path exists (`generate()`), but generation is off, because demos are built with no API spend. The page describes it as the production host and states that the shown run was written on a subscription and started by hand.
 
 ## What can be called from outside
 

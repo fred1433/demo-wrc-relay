@@ -7,7 +7,7 @@
     const add = (label, text) => out.push({ label, text: String(text ?? '') });
     add('Title tag', c.title_tag); add('Meta description', c.meta_description); add('H1', c.h1);
     [].concat(c.intro).forEach(p => add('Intro', p));
-    c.sections.forEach(s => { add('Heading', s.heading); s.paragraphs.forEach(p => add(s.heading, p)); });
+    c.sections.forEach(s => { add('Heading', s.heading); s.paragraphs.forEach(p => add(s.heading, p)); (s.bullets || []).forEach(b => add(s.heading, b)); });
     c.faq.forEach(f => { add('FAQ question', f.question); add(f.question, f.answer); });
     add('Call to action', c.cta.heading); add('Call to action', c.cta.text); add('Button', c.cta.button_label);
     return out;

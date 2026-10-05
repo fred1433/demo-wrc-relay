@@ -27,4 +27,8 @@ assert.strictEqual(WRCDiff.changes(base(), base()).length, 0);
 let w = WRCDiff.words('Tell the crew or send a photo showing:', 'When you call or fill in the form, tell the crew:');
 assert.strictEqual(w.map(p => p.t).join(''), '-+=-+');
 assert.ok(!/\+-|-\+-/.test(w.map(p => p.t).join('')), 'no interleaving');
-console.log('diff tests: 6 passed');
+// 7. bullets are blocks of their own, in page order
+a = base(); a.sections[0].bullets = ['Gate width', 'Keep the wood?']; b = JSON.parse(JSON.stringify(a)); b.sections[0].bullets[1] = 'Keep the wood as rounds?';
+ch = WRCDiff.changes(a, b);
+assert.strictEqual(ch.length, 1); assert.strictEqual(WRCDiff.blocks(b)[ch[0].finalIndex].text, 'Keep the wood as rounds?');
+console.log('diff tests: 7 passed');

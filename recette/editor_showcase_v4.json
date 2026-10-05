@@ -1,0 +1,45 @@
+{
+ "edits": [
+  {
+   "path": "intro.0",
+   "why": "Outcome promise not in the approved facts (V5).",
+   "before": "Prairie Line Tree Removal connects Spokane homeowners with a local tree crew for whole-tree removal. Most calls come from people with a tall pine or a dead tree standing close to the house, garage or fence, and who want it gone without damage to what is next to it.",
+   "after": "Prairie Line Tree Removal connects Spokane homeowners with a local tree crew for whole-tree removal. Most calls come from people with a tall pine or a dead tree standing close to the house, garage or fence."
+  },
+  {
+   "path": "sections.0.paragraphs.0",
+   "why": "Cleanup beyond hauling is not in the approved facts (V5).",
+   "before": "We remove whole trees. The crew cuts up the tree, hauls away the branches and trunk wood, and leaves the work area cleared of what was cut. If you want to keep the wood, tell us when you ask for the quote and the trunk is cut into rounds and left on site for you.",
+   "after": "We remove whole trees. The crew cuts up the tree and hauls away the branches and trunk wood. If you want to keep the wood, tell us when you ask for the quote and the trunk is cut into rounds and left on site for you."
+  },
+  {
+   "path": "sections.4.paragraphs.1",
+   "why": "Internal cross-reference replaced by the fact itself.",
+   "before": "Grinding is not the same as refilling the hole. See the list of what is not included below.",
+   "after": "Grinding takes the stump down; filling the hole with topsoil or seed is not part of the service."
+  },
+  {
+   "path": "sections.6.paragraphs.1",
+   "why": "Local precision: plan the service drop ahead of a scheduled removal, with the official source (V6).",
+   "before": "If a service wire from the pole to your house runs near the tree and you are an Avista customer, note that Avista does not prune around that wire. You can request a no-cost service drop at (800) 227-9187, which de-energizes and temporarily removes the line so the work can be done safely. It is available Monday to Friday, 8 a.m. to 3 p.m., and must be requested at least three business days in advance.",
+   "after": "If a service wire from the pole to your house runs near the tree and you are an Avista customer, note that Avista does not prune around that wire. You can request a no-cost service drop at (800) 227-9187, which de-energizes and temporarily removes the line so the work can be done safely. It is available Monday to Friday, 8 a.m. to 3 p.m., and must be requested at least three business days in advance, so book it before the removal date (details on myavista.com, tree trimming FAQ)."
+  },
+  {
+   "path": "faq.4.answer",
+   "why": "FAQ repeated the permit paragraph; now it answers the question and gives the next step (V7).",
+   "before": "In the City of Spokane, a tree on private property needs no city permit. A tree in the public right-of-way needs an Urban Forestry permit, and the width of the right-of-way varies by street, so check with Urban Forestry at 509.363.5495 if the tree is near a road or alley.",
+   "after": "Not for a tree on private property in the City of Spokane. If the tree may stand in the public right-of-way near a road or alley, call Urban Forestry at 509.363.5495 before you book the removal."
+  }
+ ],
+ "note": "Open questions: insurance and licensing, scheduling after the quote and the site URL are not in the form, so the page stays silent on them. Cleanup wording now matches the facts (branches and trunk wood hauled away). The Urban Forestry number and permit wording match the City of Spokane permits page; the Avista service drop wording matches Avista's tree trimming FAQ, and power-line trees stay excluded.",
+ "save_in_review": "Saved.",
+ "two_simultaneous_approvals": [
+  {
+   "already": true
+  },
+  {
+   "saved": true,
+   "status": "approved"
+  }
+ ]
+}
